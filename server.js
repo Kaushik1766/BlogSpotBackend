@@ -41,6 +41,13 @@ app.post("/register", async (req, res) => {
     }
 });
 
+app.post('/edit', async (req, res) => {
+    // console.log(req.body);
+    let { post, title, id } = req.body
+    await db.query(`update blog set post = '${post}', title='${title}' where id=${id}`)
+    res.send()
+})
+
 app.post('/session', async (req, res) => {
     let user = '';
     if (req.body.sessionID) {
